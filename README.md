@@ -73,7 +73,8 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 - [Live Demo Link](https://airweatherquality.netlify.app/)
-- [Presentation link](https://github.com/ginabeki/airquality_app/pull/3#issue-1522315165)
+
+- [Presentation link here](https://github.com/ginabeki/airquality_app/pull/3#issue-1522315165)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
