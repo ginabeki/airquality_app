@@ -6,10 +6,12 @@ const SearchBar = ({ search, setSearch, handleSearch }) => (
     <form
       action=""
       onSubmit={(e) => handleSearch(e)}
-      style={{ position: 'relative' }}
+      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
     >
       <input
-        style={{ position: 'relative', padding: '0.5rem' }}
+        style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.5rem', marginTop: '1rem',
+        }}
         type="search"
         name="search"
         value={search}

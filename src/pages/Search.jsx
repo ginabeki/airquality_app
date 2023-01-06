@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import SearchBar from '../componentsInfo/SearchBar';
+import SearchBar from '../components/SearchBar';
 import { fetchLocation } from '../redux/searchLocation';
-import SearchResults from '../componentsInfo/searchResults';
+import SearchResults from '../components/searchResults';
 
 const Search = () => {
   const dispatch = useDispatch();

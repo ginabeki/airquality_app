@@ -22,6 +22,7 @@
   - [👥 Author ](#-author-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
+  - [� Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
@@ -155,6 +156,12 @@ Feel free to check the [issues page](https://github.com/ginabeki/airquality_app/
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to thank...
+
+- Design is inspired from a design made by [Nelson Sakwa](https://www.behance.net/sakwadesignstudio).
+- Linters are made by [Microverse Inc](https://github.com/microverseinc).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { HiSearchCircle } from 'react-icons/hi';
 import { getAirQuality, getError, getStatus } from '../../redux/airQuality';
-import DetailsSummary from '../../componentsInfo/DetailsSummary';
-import Forecast from '../../componentsInfo/Forecast';
-import AppComponents from '../../componentsInfo/AppComponents';
+import DetailsSummary from '../../components/DetailsSummary';
+import Forecast from '../../components/Forecast';
+import AppComponents from '../../components/AppComponents';
 
 const Details = () => {
   const airQuality = useSelector(getAirQuality);

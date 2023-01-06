@@ -40,16 +40,6 @@ Array [
           >
             BREEZER
           </p>
-          <small
-            style={
-              Object {
-                "color": "#313715",
-                "fontSize": "0.8rem",
-              }
-            }
-          >
-            air quality app
-          </small>
         </div>
       </a>
       <a

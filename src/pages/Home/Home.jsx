@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HiSearchCircle } from 'react-icons/hi';
-import DetailsSummary from '../../componentsInfo/DetailsSummary';
+import { FaArrowRight } from 'react-icons/fa';
+import DetailsSummary from '../../components/DetailsSummary';
+import '../../index.css';
 import {
   fetchAirQuality,
   getAirQuality,
@@ -47,9 +49,6 @@ const Home = () => {
             <p style={{ color: '#D16014', fontWeight: 'bold' }}>
               BREEZER
             </p>
-            <small style={{ color: '#313715', fontSize: '0.8rem' }}>
-              air quality app
-            </small>
           </div>
         </Link>
         <Link to="search">
@@ -58,9 +57,6 @@ const Home = () => {
       </nav>
 
       <div className="rounded-xl bg-white py-2 pb-4 mb-4 flex flex-col justify-center items-start drop-shadow">
-        <div className="text-l font-medium text-gray-600 pb-3 border-b border-solid border-gray-300 px-3 w-full ">
-          <h3 style={{ padding: ' 0.2rem 1rem' }}>Home</h3>
-        </div>
         <div className="px-4 pt-3">
           <DetailsSummary
             airQuality={airQuality}
@@ -81,7 +77,7 @@ const Home = () => {
               boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
             }}
             >
-              Other Major Cities
+              STATS BY COUNTRY
             </h3>
           </div>
           <div>
@@ -103,11 +99,20 @@ const Home = () => {
                   onClick={() => handleShowDetails(location)}
                 >
                   <li style={{
-                    display: 'flex', borderRadius: '4px', border: '1px solid grey', justifyContent: 'space-between', padding: '0.5rem',
+                    display: 'flex', flexDirection: 'column', borderRadius: '4px', border: '1px solid grey', justifyContent: 'space-between', padding: '0.5rem', height: '150px',
                   }}
                   >
-                    <p>{location.name}</p>
-                    <p className="text-gray-600">{location.country}</p>
+                    <p style={{ display: 'flex', justifyContent: 'flex-end', border: '1px solid #fff' }} className="arrowIcon"><FaArrowRight /></p>
+                    <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'end' }}>
+                      <p style={{
+                        fontWeight: 'bold', fontSize: '1.3rem', textTransform: 'uppercase', fontFamily: 'Lato',
+                      }}
+                      >
+                        {location.name}
+                      </p>
+                      <p className="text-gray-600">{location.country}</p>
+                    </div>
+
                   </li>
                 </Link>
               ))}
@@ -115,17 +120,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Link
-        style={{ display: 'flex', justifyContent: 'center' }}
-        to="search"
-      >
-        <span style={{
-          border: '1px solid #D16014', padding: '0.5rem', borderRadius: '12px', color: 'rgba(0, 0, 0, 0.7)', backgroundColor: '#fff',
-        }}
-        >
-          Search other Locations
-        </span>
-      </Link>
     </div>
   );
 };
