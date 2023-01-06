@@ -32,7 +32,7 @@
 
 # 📖 [Breezer air quality app] <a name="about-project"></a>
 
-**[Breezer air quality app]** is a mobile web application that pulls data from the OpenWeatherMap API to allow users to search and view the forecast of different cities around the world. Built with React & Redux.
+**[Breezer air quality app]** is a mobile web application that pulls data from the OpenWeatherMap API to allow users to search for and view the forecast in different cities around the world. Built with React & Redux.
 
 <div align="center">
  
@@ -73,7 +73,6 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 - [Live Demo Link](https://airweatherquality.netlify.app/)
-- [Presentation Link](https://www.loom.com/share/cb777d0827ff48f096b1ccd029364723)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
