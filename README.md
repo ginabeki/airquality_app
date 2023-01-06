@@ -74,7 +74,7 @@
 
 - [Live Demo Link](https://airweatherquality.netlify.app/)
 
-- [Presentation link here](https://github.com/ginabeki/airquality_app/pull/3#issue-1522315165)
+- [Presentation link](https://www.loom.com/share/9a544a1157c747b09767cc708ee44e55) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
