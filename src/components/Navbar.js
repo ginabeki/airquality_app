@@ -12,7 +12,7 @@ function Navbar() {
         <NavLink to="/">
           <IoIosArrowBack
             className="me-3 fs-1"
-            style={{ color: 'white' }}
+            style={{ color: 'white', backgroundColor: 'black' }}
             data-testid="back-button"
           />
         </NavLink>
