@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = process.env.REACT_APP_URL;
-const apiKey = process.env.REACT_APP_KEY;
+const url = 'http://api.openweathermap.org/data/2.5/air_pollution/forecast';
+const apiKey = '&appid=c5e60d49c527e846f710b5b769e46a92';
 
 const initialState = {
   loading: false,
