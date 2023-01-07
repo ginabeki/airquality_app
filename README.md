@@ -125,8 +125,6 @@ To run tests, run the following command:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AUTHORS -->
-
 ## 👥 Author <a name="authors"></a>
 
 - GitHub: [@ginabeki](https://github.com/ginabeki)
