@@ -69,7 +69,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://airqualityweather.onrender.com/)
+- [Live Demo Link](https://airqualityweather.netlify.app/)
 
 - [Presentation link](https://www.loom.com/share/9a544a1157c747b09767cc708ee44e55) 
 
