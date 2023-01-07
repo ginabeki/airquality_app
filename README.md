@@ -22,7 +22,7 @@
   - [👥 Author ](#-author-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
-  - [� Acknowledgments ](#-acknowledgments-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
@@ -33,7 +33,7 @@
 
 <div align="center">
  
-  <img src="weather.png" alt="logo"/>
+  <img src="mobile.png" alt="logo"/>
   <br/>
   </div>
 

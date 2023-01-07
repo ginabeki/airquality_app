@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
   margin: 0;
   padding: 0;
@@ -14,22 +10,25 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
-  background-color: #fff;
-  background-image: url(https://www.smogon.com/forums/attachments/ezgif-com-gif-maker-gif.281708/);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 }
 
-.arrowIcon {
-  position: relative;
-  top: 0;
-  transition: top ease 0.5s;
-  margin-right: 1rem;
-  background-color: #fff;
+.backgroundColorOdd {
+  background-color: #068D9D;
+  color: #C6EBBE;
 }
 
-.arrowIcon:hover {
-  right: -10px;
-  font-size: 1.2rem;
+.table-row:nth-child(odd) {
+  background-color: #068D9D;
+  color: #C6EBBE;
+}
+
+.link-light {
+  background-color: #068D9D;
+  border: 1px solid #C6EBBE;
+  color: #C6EBBE;
+  transition: transform .2s;
+}
+
+.link-light:hover {
+  transform: scale(1.03);
 }

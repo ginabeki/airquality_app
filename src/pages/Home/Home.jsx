@@ -1,127 +1,74 @@
+/* eslint-disable no-return-assign */
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { HiSearchCircle } from 'react-icons/hi';
-import { FaArrowRight } from 'react-icons/fa';
-import DetailsSummary from '../../components/DetailsSummary';
-import '../../index.css';
-import {
-  fetchAirQuality,
-  getAirQuality,
-  getError,
-  getStatus,
-} from '../../redux/airQuality';
-import { otherLocation } from '../../Data/api';
+import { useDispatch } from 'react-redux';
+import { Form, InputGroup } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { fetchData } from '../../redux/airQuality';
+import location from '../../redux/location';
+import MapChart from '../../components/map';
 
-const Home = () => {
-  const [addRequestStatus, setAddRequestStatus] = useState('idle');
+function Home() {
+  const [filter, setFilter] = useState('');
   const dispatch = useDispatch();
-  const airQuality = useSelector(getAirQuality);
-  const status = useSelector(getStatus);
-  const error = useSelector(getError);
-
-  const handleShowDetails = (location) => {
-    if (addRequestStatus === 'idle') {
-      try {
-        setAddRequestStatus('pending');
-        dispatch(fetchAirQuality(location)).unwrap();
-      } catch (err) {
-        throw new Error(err);
-      } finally {
-        setAddRequestStatus('idle');
-      }
-    }
+  const navigate = useNavigate();
+  const data = location;
+  const handleClick = (element) => {
+    navigate(`/${element[3]}`);
+    dispatch(
+      fetchData({
+        lat: element[1],
+        long: element[2],
+        countrySymbol: element[0],
+        countryName: element[3],
+      }),
+    );
   };
-
+  const updateResult = (result) => (result % 2 === 1 ? result + 1 : result + 3);
+  const filteredCountry = (country) => country.filter((name) => name[3]
+    .toLowerCase().includes(filter.toLowerCase()));
+  let color = 0;
   return (
-    <div className="home__section relative min-h-screen px-4">
-      <nav
-        className="flex justify-between p-4 items-center"
-        style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px',
-        }}
-      >
-        <Link to="/">
-          <div style={{
-            padding: '0.5rem', borderRadius: '4px', border: '1px solid #D16014', backgroundColor: '#fff',
-          }}
-          >
-            <p style={{ color: '#D16014', fontWeight: 'bold' }}>
-              BREEZER
-            </p>
-          </div>
-        </Link>
-        <Link to="search">
-          <HiSearchCircle style={{ color: '#D16014', fontSize: '1.5rem' }} />
-        </Link>
-      </nav>
-
-      <div className="rounded-xl bg-white py-2 pb-4 mb-4 flex flex-col justify-center items-start drop-shadow">
-        <div className="px-4 pt-3">
-          <DetailsSummary
-            airQuality={airQuality}
-            status={status}
-            error={error}
-            summary={false}
+    <div className="text-center">
+      <MapChart />
+      <div className="mx-4">
+        <InputGroup className="my-3">
+          <Form.Control
+            placeholder="Search country..."
+            aria-label="Search country..."
+            aria-describedby="basic-addon2"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
           />
-        </div>
+        </InputGroup>
       </div>
-      <div>
-        <div className=" bg-white rounded-2xl drop-shadow-sm mt-3 pt-4 pb-2 font-Roboto">
-          <div className="flex justify-between pb-3 border-b border-solid border-gray-300 px-3">
-            <h3 style={{
-              padding: '0.5rem 0.8rem',
-              backgroundColor: '#fff',
-              margin: '1rem 0',
-              borderRadius: '4px',
-              boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
-            }}
-            >
-              STATS BY COUNTRY
-            </h3>
-          </div>
-          <div>
-            <ul style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '1rem',
-              padding: '1rem',
-              backgroundColor: '#fff',
-              marginBottom: '1rem',
-              borderRadius: '4px',
-              boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
-            }}
-            >
-              {otherLocation.map((location) => (
-                <Link
-                  to="search/details"
-                  key={location.id}
-                  onClick={() => handleShowDetails(location)}
-                >
-                  <li style={{
-                    display: 'flex', flexDirection: 'column', borderRadius: '4px', border: '1px solid grey', justifyContent: 'space-between', padding: '0.5rem', height: '150px',
-                  }}
-                  >
-                    <p style={{ display: 'flex', justifyContent: 'flex-end', border: '1px solid #fff' }} className="arrowIcon"><FaArrowRight /></p>
-                    <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'end' }}>
-                      <p style={{
-                        fontWeight: 'bold', fontSize: '1.3rem', textTransform: 'uppercase', fontFamily: 'Lato',
-                      }}
-                      >
-                        {location.name}
-                      </p>
-                      <p className="text-gray-600">{location.country}</p>
-                    </div>
-
-                  </li>
-                </Link>
-              ))}
-            </ul>
-          </div>
-        </div>
+      <h5 className="text-start ps-4 py-1 backgroundColorOdd">STATS BY COUNTRY</h5>
+      <div className="m-0 d-flex flex-wrap justify-content-center" style={{ cursor: 'pointer' }}>
+        {filteredCountry(data).map((element, index) => (
+          <section
+            key={element[2]}
+            onClick={() => handleClick(element)}
+            aria-hidden="true"
+            style={{ flex: '40%', height: '155px' }}
+            className={`d-flex text-center justify-content-center align-items-center text-white link-light ${
+              color === index ? (color = updateResult(color)) : 'backgroundColorOdd'
+            }`}
+          >
+            <div>
+              <h5 data-testid="country-details">{element[0]}</h5>
+              <h6>{element[3]}</h6>
+              <p>
+                latitude:&nbsp;
+                {Math.round(element[1] * 100) / 100}
+                <br />
+                longitude:&nbsp;
+                {Math.round(element[2] * 100) / 100}
+              </p>
+            </div>
+          </section>
+        ))}
       </div>
     </div>
   );
-};
+}
 
 export default Home;

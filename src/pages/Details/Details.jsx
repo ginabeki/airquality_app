@@ -1,40 +1,80 @@
 import React from 'react';
-import { IoIosClose } from 'react-icons/io';
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { HiSearchCircle } from 'react-icons/hi';
-import { getAirQuality, getError, getStatus } from '../../redux/airQuality';
-import DetailsSummary from '../../components/DetailsSummary';
-import Forecast from '../../components/Forecast';
-import AppComponents from '../../components/AppComponents';
+import MapChart from '../../components/map';
+import '../../index.css';
 
-const Details = () => {
-  const airQuality = useSelector(getAirQuality);
-  const status = useSelector(getStatus);
-  const error = useSelector(getError);
-
+const About = () => {
+  const pollutionData = useSelector((state) => state.airPollution);
   return (
-    <div className="relative max-w-[440px] w-[100vw] min-h-[100vh] mx-auto bg-gray-100 opacity-50">
-      <div style={{
-        padding: '0.5rem', display: 'flex', justifyContent: 'space-between', color: '#D16014', fontSize: '1.5rem',
-      }}
-      >
-        <Link to="/">
-          <div style={{ border: '1px solid #fff', borderRadius: '50%', backgroundColor: '#fff' }}>
-            <IoIosClose />
+    <div className="text-center" data-testid="pollution-table">
+      <MapChart />
+      {pollutionData.loading && <h2>Loading...</h2>}
+      {!pollutionData.loading && pollutionData.error ? (
+        <h2>
+          Error:
+          {' '}
+          {pollutionData.error}
+        </h2>
+      ) : null}
+      {!pollutionData.loading && pollutionData.pollutionData.list ? (
+        <>
+          <div style={{ textAlign: 'center', margin: '16px 0' }}>
+            <h4>
+              {pollutionData.pollutionData.countryName}
+              ,&nbsp;
+              {pollutionData.pollutionData.countrySymbol}
+            </h4>
+            <h6>
+              Date:&nbsp;
+              {new Date(
+                pollutionData.pollutionData.list[1].dt,
+              ).toLocaleDateString('en-US')}
+              &emsp;&emsp;
+              <span>Air Quality Index:&nbsp;</span>
+              {pollutionData.pollutionData.list[0].main.aqi}
+            </h6>
           </div>
-        </Link>
-        <Link to="/search" style={{ border: '1px solid #fff', borderRadius: '50%', backgroundColor: '#fff' }}>
-          <HiSearchCircle className="text-4xl text-gray-300 " />
-        </Link>
-      </div>
-      <div className="px-5 py-7">
-        <DetailsSummary airQuality={airQuality} status={status} error={error} summary />
-        <Forecast airQuality={airQuality} />
-        <AppComponents airQuality={airQuality} />
-      </div>
+          <table
+            style={{
+              textAlign: 'center',
+              width: '100%',
+              backgroundColor: '#22AAA1',
+            }}
+          >
+            <thead>
+              <tr className="fs-4">
+                <th
+                  style={{ width: '50%' }}
+                  className="py-2"
+                >
+                  Gases
+                </th>
+                <th
+                  style={{ width: '100%' }}
+                  className="py-2"
+                >
+                  Pollutant concentration in μg/m3
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(
+                pollutionData.pollutionData.list[1].components,
+              ).map(([key, val]) => (
+                <tr
+                  key={val}
+                  className="table-row"
+                >
+                  <td className="py-3 fs-5">{key.toUpperCase()}</td>
+                  <td className="py-3 fs-5">{val}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : null}
     </div>
   );
 };
 
-export default Details;
+export default About;

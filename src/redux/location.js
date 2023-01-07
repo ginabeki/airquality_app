@@ -1,6 +1,4 @@
 const location = [
-  ['AD', 42.546245, 1.601554, 'Andorra'],
-  ['AE', 23.424076, 53.847818, 'United Arab Emirates'],
   ['AF', 33.93911, 67.709953, 'Afghanistan'],
   ['AG', 17.060816, -61.796428, 'Antigua and Barbuda'],
   ['AI', 18.220554, -63.068615, 'Anguilla'],
