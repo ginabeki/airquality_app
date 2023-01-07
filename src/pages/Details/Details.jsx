@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import MapChart from '../../components/map';
 import '../../index.css';
 
-const About = () => {
+const Details = () => {
   const pollutionData = useSelector((state) => state.airPollution);
   return (
     <div className="text-center" data-testid="pollution-table">
@@ -77,4 +77,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Details;

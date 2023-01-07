@@ -13,20 +13,20 @@ body {
 }
 
 .backgroundColorOdd {
-  background-color: #068D9D;
-  color: #C6EBBE;
+  background-color: #068d9d;
+  color: #c6ebbe;
 }
 
 .table-row:nth-child(odd) {
-  background-color: #068D9D;
-  color: #C6EBBE;
+  background-color: #068d9d;
+  color: #c6ebbe;
 }
 
 .link-light {
-  background-color: #068D9D;
-  border: 1px solid #C6EBBE;
-  color: #C6EBBE;
-  transition: transform .2s;
+  background-color: #068d9d;
+  border: 1px solid #c6ebbe;
+  color: #c6ebbe;
+  transition: transform 0.2s;
 }
 
 .link-light:hover {
