@@ -1,52 +1,44 @@
-/* eslint-disable no-param-reassign */
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { airQualityURL } from '../Data/api';
+
+const url = 'http://api.openweathermap.org/data/2.5/air_pollution/forecast';
+const apiKey = '&appid=c5e60d49c527e846f710b5b769e46a92';
 
 const initialState = {
-  airQuality: {},
-  status: 'idle',
-  error: 'null',
+  loading: false,
+  pollutionData: [],
+  error: '',
 };
 
-export const fetchAirQuality = createAsyncThunk('airQuality/fetchAirQuality', async (location) => {
-  try {
-    const response = await axios.get(airQualityURL(location.lat, location.lon));
-    return { ...response.data, location };
-  } catch (err) {
-    throw new Error(err);
-  }
-});
+const rearrangeData = (apiData, localData) => {
+  const data = { ...apiData, ...localData };
+  return data;
+};
 
-const airQualitySlice = createSlice({
-  name: 'airQuality',
+export const fetchData = createAsyncThunk('AIR_POLLUTION_DATA', (coordinate) => axios
+  .get(`${url}?lat=${coordinate.lat}&lon=${coordinate.long}${apiKey}`)
+  .then((response) => rearrangeData(response.data, coordinate)));
+
+const airQuality = createSlice({
+  name: 'pollutionData',
   initialState,
-  reducers: {},
-  extraReducers(builder) {
-    builder
-      .addCase(fetchAirQuality.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchAirQuality.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        const { list, location } = action.payload;
-        const { main, dt, components } = list[0];
-        state.airQuality = {
-          main: { ...main },
-          dt,
-          components: { ...components },
-          location: { ...location },
-        };
-      })
-      .addCase(fetchAirQuality.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
+  extraReducers: (builder) => {
+    builder.addCase(fetchData.pending, (state) => {
+      const states = state;
+      states.loading = true;
+    });
+    builder.addCase(fetchData.fulfilled, (state, action) => {
+      const states = state;
+      states.loading = false;
+      states.pollutionData = action.payload;
+    });
+    builder.addCase(fetchData.rejected, (state, action) => {
+      const states = state;
+      states.loading = false;
+      states.pollutionData = [];
+      states.error = action.error.message;
+    });
   },
 });
 
-export const getAirQuality = (state) => state.airQuality.airQuality;
-export const getStatus = (state) => state.airQuality.status;
-export const getError = (state) => state.airQuality.error;
-
-export default airQualitySlice.reducer;
+export default airQuality.reducer;
