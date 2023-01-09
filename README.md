@@ -71,7 +71,6 @@
 
 - [Live Demo Link](https://airqualityweather.onrender.com)
 
-- [Presentation link](https://www.loom.com/share/9a544a1157c747b09767cc708ee44e55) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
