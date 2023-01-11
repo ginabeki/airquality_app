@@ -1,11 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
- 
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
-
-  <h3><b>Microverse README Template</b></h3>
+   <h3><b>Microverse README Template</b></h3>
 
 </div>
 
@@ -26,6 +22,7 @@
   - [👥 Author ](#-author-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
@@ -36,7 +33,7 @@
 
 <div align="center">
  
-  <img src="weather.png" alt="logo"/>
+  <img src="mobile.png" alt="logo"/>
   <br/>
   </div>
 
@@ -72,8 +69,9 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://airweatherquality.netlify.app/)
-- [Presentation link](https://github.com/ginabeki/airquality_app/pull/3#issue-1522315165)
+- [Live Demo Link](https://airqualityweather.onrender.com)
+
+- [Presentation link](https://www.loom.com/share/9a544a1157c747b09767cc708ee44e55) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -127,8 +125,6 @@ To run tests, run the following command:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AUTHORS -->
-
 ## 👥 Author <a name="authors"></a>
 
 - GitHub: [@ginabeki](https://github.com/ginabeki)
@@ -158,6 +154,12 @@ Feel free to check the [issues page](https://github.com/ginabeki/airquality_app/
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I would like to thank...
+
+- Design is inspired from a design made by [Nelson Sakwa](https://www.behance.net/sakwadesignstudio).
+- Linters are made by [Microverse Inc](https://github.com/microverseinc).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
